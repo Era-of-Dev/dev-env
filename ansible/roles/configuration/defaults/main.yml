@@ -1,0 +1,9 @@
+flatpak_list:
+  - com.spotify.Client
+  - org.gnome.NetworkDisplays
+  - com.discordapp.Discord
+
+groups_list:
+  - docker
+  - vboxusers
+  - dialout

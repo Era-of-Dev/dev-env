@@ -30,3 +30,7 @@
 - debug:
     var: hashicorp_distro_name
   when: debug
+
+- debug:
+    var: ansible_env.SUDO_USER
+  when: debug
