@@ -1,0 +1,32 @@
+- name: Print all available facts
+  ansible.builtin.debug:
+    var: ansible_facts
+  when: debug
+
+- debug:
+    var: ansible_distribution
+  when: debug
+
+- name: Get distro name
+  shell: cat /etc/os-release | grep ^ID | cut -d "=" -f2 | head -n 1 | tr -d '"'
+  register: distro_name
+
+- name: Set docker distro name
+  set_fact: 
+    docker_distro_name: "{% if distro_name.stdout=='rocky'%}centos{% else %}{{distro_name.stdout}}{% endif %}"
+
+- name: Set hashicorp distro name
+  set_fact:
+    hashicorp_distro_name: "{% if distro_name.stdout=='rocky'%}RHEL{% else %}{{distro_name.stdout}}{% endif %}"
+
+- debug:
+    var: distro_name
+  when: debug
+
+- debug:
+    var: docker_distro_name
+  when: debug
+
+- debug:
+    var: hashicorp_distro_name
+  when: debug

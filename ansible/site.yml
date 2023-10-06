@@ -1,0 +1,13 @@
+
+- name: Setup Dev Environment
+  hosts: all
+  become: true
+  roles:
+    - role: base
+      tags: base
+    - role: configuration
+      tags: configuration
+    - role: nvidia # only run this role if tag specified
+      tags: 
+        - nvidia
+        - never 

@@ -1,0 +1,55 @@
+base_packages:
+  # - epel-release
+  - dnf-plugins-core
+  - neofetch
+  - git
+  - terminator
+  - zsh
+  - filezilla
+  - python3-pip
+  - sshpass
+  - kernel-devel
+
+# additional_repos:
+#   - https://download.docker.com/linux/fedora/docker-ce.repo
+#   - https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+
+create_repos:
+  - name: "vscode"
+    description: "Visual Studio Code"
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+  - name: "microsoft-edge-dev"
+    description: "microsoft-edge-dev"
+    baseurl: https://packages.microsoft.com/yumrepos/edge
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+  - name: docker-ce-stable
+    description: "Docker CE Stable - $basearch"
+    baseurl: https://download.docker.com/linux/{{docker_distro_name}}/$releasever/$basearch/stable
+    gpgkey: https://download.docker.com/linux/{{docker_distro_name}}/gpg
+  - name: hashicorp
+    description: "Hashicorp Stable - $basearch"
+    baseurl: https://rpm.releases.hashicorp.com/{{hashicorp_distro_name}}/$releasever/$basearch/stable
+    gpgkey: https://rpm.releases.hashicorp.com/gpg
+    
+additional_packages:
+  # Docker
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
+  # Microsoft Edge
+  - microsoft-edge-dev
+  # Hashicorp
+  - vagrant
+  - packer
+
+rpmfusion_packages:
+  - "https://mirrors.rpmfusion.org/free/{{rpmfusion_distro_name}}/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+  - "https://mirrors.rpmfusion.org/nonfree/{{rpmfusion_distro_name}}/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
+
+vb_packages:
+  # Virtualbox
+  - VirtualBox
+  - akmod-VirtualBox

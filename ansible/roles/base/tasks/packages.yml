@@ -1,0 +1,34 @@
+- name: Upgrade packages
+  package:
+    name: "*"
+    state: latest
+
+- name: Install epel
+  package:
+    name: epel-release
+    state: latest
+  when: ansible_distribution=='Rocky' 
+
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop: 
+    - "{{ base_packages }}"
+    - "{% if (distro_name=='fedora') %}java-1.8.0-openjdk-openjfx{% endif %}"
+
+- name: Create additional repositories
+  yum_repository:
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    baseurl: "{{ item.baseurl }}"
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: "{{ item.gpgkey}}"
+  loop: "{{ create_repos }}"
+
+- name: Install additional packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ additional_packages }}"
