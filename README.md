@@ -48,5 +48,5 @@ Ansible scripts for setting up a development environment
   * Figure out which connection `NAME` is yellow `nmcli con show`
   * `nmcli con mod "Wired connection 2" ipv4.addresses 192.168.56.111/24`
     * replace `Wired connection 2` with the `NAME` in yellow
-  * Continue building:
+  * Exit VM and continue building:
     * `vagrant up --provision`

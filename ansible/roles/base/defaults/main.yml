@@ -8,6 +8,7 @@ base_packages:
   - filezilla
   - python3-pip
   - sshpass
+  - golang
   - kernel-devel
 
 # additional_repos:

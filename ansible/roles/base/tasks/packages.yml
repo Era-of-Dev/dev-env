@@ -15,7 +15,7 @@
     state: latest
   loop: 
     - "{{ base_packages }}"
-    - "{% if (distro_name=='fedora') %}java-1.8.0-openjdk-openjfx{% endif %}"
+    - "{% if (distro_name.stdout=='fedora') %}java-1.8.0-openjdk-openjfx{% endif %}"
 
 - name: Create additional repositories
   yum_repository:

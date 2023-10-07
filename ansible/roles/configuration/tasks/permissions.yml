@@ -1,0 +1,6 @@
+- name: Add user to groups
+  user:
+    name: "{{ ansible_env.SUDO_USER }}"
+    groups: "{{ item }}"
+    append: yes
+  loop: "{{ groups_list }}"

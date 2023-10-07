@@ -1,0 +1,10 @@
+- name: Create directory
+  file:
+    path: /etc/vbox
+    state: directory
+
+- name: Add line to /etc/vbox/networks.conf
+  lineinfile:
+    path: /etc/vbox/networks.conf
+    create: true
+    line: "* 0.0.0.0/0 ::/0"
