@@ -1,0 +1,7 @@
+- name: Install vscode extensions
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  command: code --install-extension {{ item }}
+  loop: "{{ vscode_extensions }}"
+  register: install_result
+  # changed_when: install_result.stdout | regex_search('installed', ignorecase=True)
+  changed_when: "'already installed' not in install_result.stdout"

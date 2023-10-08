@@ -1,4 +1,4 @@
-- name: Create directory
+- name: Create vbox directory
   file:
     path: /etc/vbox
     state: directory

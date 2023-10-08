@@ -4,5 +4,5 @@
 - import_tasks: go-install.yml
 - import_tasks: vbox.yml
 - import_tasks: vagrant-plugins.yml
-- import_tasks: vscode-plugins.yml
+- import_tasks: vscode-extensions.yml
 - import_tasks: zsh.yml

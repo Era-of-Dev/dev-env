@@ -37,3 +37,17 @@ oh_my_zsh_update_mode: auto
 # than "disabled", this is the frequency (in days) to check for a new version.
 # The value 0 will check every time a new shell session starts.
 oh_my_zsh_update_frequency: 1
+
+vagrant_plugins:
+  - vagrant-scp
+  - vagrant-timezone
+  - vagrant-registration
+
+vscode_extensions:
+  - donjayamanne.git-extension-pack
+  - donjayamanne.githistory
+  - eamodio.gitlens
+  - mhutchie.git-graph
+  - tonybaloney.vscode-pets
+  - waderyan.gitblame
+  - yzhang.markdown-all-in-one

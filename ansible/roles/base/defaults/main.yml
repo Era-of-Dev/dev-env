@@ -11,10 +11,6 @@ base_packages:
   - golang
   - kernel-devel
 
-# additional_repos:
-#   - https://download.docker.com/linux/fedora/docker-ce.repo
-#   - https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
-
 create_repos:
   - name: "vscode"
     description: "Visual Studio Code"
@@ -24,7 +20,7 @@ create_repos:
     description: "microsoft-edge-dev"
     baseurl: https://packages.microsoft.com/yumrepos/edge
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-  - name: docker-ce-stable
+  - name: docker-ce
     description: "Docker CE Stable - $basearch"
     baseurl: https://download.docker.com/linux/{{docker_distro_name}}/$releasever/$basearch/stable
     gpgkey: https://download.docker.com/linux/{{docker_distro_name}}/gpg
@@ -40,7 +36,8 @@ additional_packages:
   - containerd.io
   - docker-buildx-plugin
   - docker-compose-plugin
-  # Microsoft Edge
+  # Microsoft
+  - code
   - microsoft-edge-dev
   # Hashicorp
   - vagrant
