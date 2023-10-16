@@ -12,10 +12,9 @@ Ansible scripts for setting up a development environment
   ```
   sudo dnf upgrade -y
   ```
-* ansible installed via python3-pip
+* ansible installed via package manager
   ```
-  python3 -m pip install --upgrade pip
-  python3 -m pip install ansible
+  sudo dnf install ansible -y
   ```
 * git (if using ansible pull) 
   ```

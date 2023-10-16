@@ -10,6 +10,7 @@ base_packages:
   - sshpass
   - golang
   - kernel-devel
+  - ansible
 
 create_repos:
   - name: "vscode"
