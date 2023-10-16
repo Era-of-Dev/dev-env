@@ -3,7 +3,7 @@ Ansible scripts for setting up a development environment
 
 ## Target systems
 * Tested with:
-  * Fedora 38 
+  * Fedora 38/39
   * Rocky 9
 
 ## Requirements
@@ -29,6 +29,16 @@ Ansible scripts for setting up a development environment
 * via ansible-pull
   ```
   ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml
+  ```
+
+### Run with NVIDIA driver install (after initial run)
+* via ansible-playbook
+  ```
+  ansible-playbook ansible/site.yml -i ansible/hosts.yml -t nvidia
+  ```
+* via ansible-pull
+  ```
+  ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml -t nvidia
   ```
 
 ## Testing

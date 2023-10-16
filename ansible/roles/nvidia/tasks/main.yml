@@ -1,0 +1,11 @@
+- name: Install NVIDIA drivers
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ packages_nvidia }}"
+  register: install_result
+
+- name: Wait for NVIDIA kernel builds
+  debug:
+    msg: "Please wait for the driver to build, check and run: modinfo -F version nvidia"
+  when: install_result.changed
