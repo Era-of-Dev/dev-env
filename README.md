@@ -39,6 +39,7 @@ Ansible scripts for setting up a development environment
 * via ansible-pull
   ```
   ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml -t nvidia
+  ```
 
 ## Testing
 * Using vagrant and VirtualBox
