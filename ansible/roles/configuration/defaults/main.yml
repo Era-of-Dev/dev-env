@@ -1,0 +1,53 @@
+service_list:
+  - docker
+
+groups_list:
+  - docker
+  - vboxusers
+  - dialout
+  
+flatpak_list:
+  - com.spotify.Client
+  - org.gnome.NetworkDisplays
+  - com.discordapp.Discord
+
+go_install_list:
+  - github.com/fullstorydev/grpcurl/cmd/grpcurl@latest
+
+# zsh
+# Default theme
+oh_my_zsh_theme: wezm+
+
+# Default plugins
+oh_my_zsh_plugins:
+  - git
+
+# Whether to install by default for all specified users.
+# May be overridden by `oh_my_zsh_install` under each user.
+oh_my_zsh_install: true
+
+# Default update mode for Oh-My-Zsh
+# accepted values are:
+# disabled (default)
+# auto
+# reminder
+oh_my_zsh_update_mode: auto
+
+# Default update frequency in days. When the update mode is set to a value other
+# than "disabled", this is the frequency (in days) to check for a new version.
+# The value 0 will check every time a new shell session starts.
+oh_my_zsh_update_frequency: 1
+
+vagrant_plugins:
+  - vagrant-scp
+  - vagrant-timezone
+  - vagrant-registration
+
+vscode_extensions:
+  - donjayamanne.git-extension-pack
+  - donjayamanne.githistory
+  - eamodio.gitlens
+  - mhutchie.git-graph
+  - tonybaloney.vscode-pets
+  - waderyan.gitblame
+  - yzhang.markdown-all-in-one

@@ -1,0 +1,4 @@
+- name: Install vagrant plugins
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  command: vagrant plugin install {{ item }}
+  loop: "{{ vagrant_plugins }}"

@@ -1,0 +1,4 @@
+- name: Install go packages
+  command: go install {{ item }}
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  loop: "{{ go_install_list }}"

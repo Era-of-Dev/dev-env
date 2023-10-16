@@ -8,11 +8,9 @@ base_packages:
   - filezilla
   - python3-pip
   - sshpass
+  - golang
   - kernel-devel
-
-# additional_repos:
-#   - https://download.docker.com/linux/fedora/docker-ce.repo
-#   - https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+  - ansible
 
 create_repos:
   - name: "vscode"
@@ -23,7 +21,7 @@ create_repos:
     description: "microsoft-edge-dev"
     baseurl: https://packages.microsoft.com/yumrepos/edge
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
-  - name: docker-ce-stable
+  - name: docker-ce
     description: "Docker CE Stable - $basearch"
     baseurl: https://download.docker.com/linux/{{docker_distro_name}}/$releasever/$basearch/stable
     gpgkey: https://download.docker.com/linux/{{docker_distro_name}}/gpg
@@ -39,7 +37,8 @@ additional_packages:
   - containerd.io
   - docker-buildx-plugin
   - docker-compose-plugin
-  # Microsoft Edge
+  # Microsoft
+  - code
   - microsoft-edge-dev
   # Hashicorp
   - vagrant

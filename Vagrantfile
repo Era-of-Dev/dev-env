@@ -56,7 +56,7 @@ Vagrant.configure("2") do |config|
 
     dev.vm.provider "virtualbox" do |vb|
       # Customize the amount of memory on the VM:
-      vb.memory = "3072"
+      vb.memory = "2048"
     end
 
     # Set the IP address configuration for the VM

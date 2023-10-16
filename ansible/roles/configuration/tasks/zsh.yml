@@ -1,0 +1,40 @@
+- name: Remove old ohmyzsh
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  file:
+    path: ~/.oh-my-zsh
+    state: absent
+
+- name: Install ohmyzsh
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  shell: 'sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc' 
+
+- name: Set default shell
+  user:
+    name: "{{ ansible_env.SUDO_USER }}"
+    shell: /bin/zsh
+
+- name: Write .zshrc
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  ansible.builtin.template:
+    src: zshrc.j2
+    dest: '~{{ ansible_env.SUDO_USER }}/.zshrc'
+    backup: true
+    mode: 'u=rw,go=r'
+
+- name: Set GOPATH
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  lineinfile:
+    line: "GOPATH=$HOME/go"
+    dest: ~/.zshrc
+
+- name: Set GOBIN
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  lineinfile:
+    line: "GOBIN=$HOME/go/bin"
+    dest: ~/.zshrc
+
+- name: Set PATH
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  lineinfile:
+    line: "PATH=$GOPATH:$GOBIN:$PATH"
+    dest: ~/.zshrc
