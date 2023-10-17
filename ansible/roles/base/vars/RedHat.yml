@@ -11,7 +11,8 @@ base_packages:
   - kernel-devel
   - ansible
   - remmina
-  - vlc
+  - minicom
+  - opensc
 
 create_repos:
   - name: "vscode"
@@ -49,7 +50,11 @@ rpmfusion_packages:
   - "https://mirrors.rpmfusion.org/free/{{rpmfusion_distro_name}}/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
   - "https://mirrors.rpmfusion.org/nonfree/{{rpmfusion_distro_name}}/rpmfusion-nonfree-release-{{ansible_distribution_major_version}}.noarch.rpm"
 
-vb_packages:
-  # Virtualbox
+additional_rpmfusion_packages:
   - VirtualBox
   - akmod-VirtualBox
+  - vlc
+
+fedora_packages:
+  - gtkterm
+  - java-1.8.0-openjdk-openjfx

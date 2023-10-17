@@ -14,4 +14,21 @@
     state: latest
   loop: "{{ additional_packages }}"
 
-- include_tasks: rpmfusion.yml
+- name: Set RPMFusion distro name
+  set_fact: 
+    rpmfusion_distro_name: "{% if ansible_distribution =='Rocky'%}el{% else %}{{ ansible_distribution | lower }}{% endif %}"
+
+- name: Install RPMFusion package repos
+  package:
+    name: "{{ item }}"
+    state: latest
+    disable_gpg_check: true
+  loop: 
+    - "{{ rpmfusion_packages }}"
+
+- name: Install packages from RPMFusion
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop: 
+    - "{{ additional_rpmfusion_packages }}"

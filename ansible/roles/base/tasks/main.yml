@@ -1,7 +1,5 @@
 - name: Include distribution specific variables
   include_vars: "{{ ansible_os_family }}.yml"
 
-- import_tasks: distro.yml
-- import_tasks: packages.yml
-
+- include_tasks: "packages-{{ ansible_os_family }}.yml"
 - include_tasks: "additional-packages-{{ ansible_os_family }}.yml"
