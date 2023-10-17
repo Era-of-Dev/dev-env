@@ -1,0 +1,53 @@
+- name: Print all available facts
+  ansible.builtin.debug:
+    var: ansible_facts
+  when: debug
+
+- debug:
+    var: ansible_distribution
+  when: debug
+
+- name: Set docker distro name
+  set_fact: 
+    docker_distro_name: "{% if ansible_distribution != 'Fedora' %}centos{% else %}{{ ansible_distribution | lower }}{% endif %}"
+
+- name: Set hashicorp distro name
+  set_fact:
+    hashicorp_distro_name: "{% if ansible_distribution != 'Fedora' %}RHEL{% else %}{{ ansible_distribution | lower }}{% endif %}"
+
+- debug:
+    var: docker_distro_name
+  when: debug
+
+- debug:
+    var: hashicorp_distro_name
+  when: debug
+
+- debug:
+    var: ansible_env.SUDO_USER
+  when: debug
+
+- name: Upgrade packages
+  package:
+    name: "*"
+    state: latest
+
+- name: Install epel
+  package:
+    name: epel-release
+    state: latest
+  when: ansible_distribution !='Fedora' 
+
+- name: Install packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop: 
+    - "{{ base_packages }}"
+
+- name: Install packages for Fedora
+  package:
+    name: "{{ item }}"
+    state: latest
+  when: ansible_distribution == 'Fedora'
+  loop: "{{ fedora_packages }}"
