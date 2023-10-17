@@ -1,3 +1,7 @@
+- name: Update apt
+  include_tasks: update-apt.yml
+  when: ansible_os_family=='Debian'
+
 - name: Upgrade packages
   package:
     name: "*"
@@ -15,20 +19,9 @@
     state: latest
   loop: 
     - "{{ base_packages }}"
-    - "{% if (distro_name.stdout=='fedora') %}java-1.8.0-openjdk-openjfx{% endif %}"
 
-- name: Create additional repositories
-  yum_repository:
-    name: "{{ item.name }}"
-    description: "{{ item.description }}"
-    baseurl: "{{ item.baseurl }}"
-    enabled: yes
-    gpgcheck: yes
-    gpgkey: "{{ item.gpgkey}}"
-  loop: "{{ create_repos }}"
-
-- name: Install additional packages
+- name: Install javafx (Fedora)
   package:
-    name: "{{ item }}"
+    name: java-1.8.0-openjdk-openjfx
     state: latest
-  loop: "{{ additional_packages }}"
+  when: distro_name.stdout=='fedora'

@@ -1,0 +1,29 @@
+- name: Install apt-transport-https
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - lsb-release
+      - gnupg
+    state: latest
+    update_cache: true
+
+- name: Add signing key
+  ansible.builtin.apt_key:
+    url: "{{ item }}"
+    state: present
+  loop: "{{ apt_signing_keys }}"
+
+- name: Add repository into sources list
+  ansible.builtin.apt_repository:
+    repo: "{{ item.repo }}"
+    state: present
+    filename: "{{ item.name }}"
+  loop: "{{ apt_repositories }}"
+
+- name: Install additional packages
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: true
+  loop: "{{ additional_packages }}"

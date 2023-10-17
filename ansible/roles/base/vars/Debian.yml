@@ -1,0 +1,36 @@
+base_packages:
+  - neofetch
+  - git
+  - terminator
+  - zsh
+  - filezilla
+  - python3-pip
+  - sshpass
+  - golang
+  - ansible
+  - virtualbox
+  - flatpak
+
+apt_signing_keys:
+  - "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+  - https://packages.microsoft.com/keys/microsoft.asc
+  - https://apt.releases.hashicorp.com/gpg
+
+apt_repositories:
+  - repo: deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+    name: docker
+  - repo: deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main
+    name: microsoft-edge
+  - repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    name: vscode
+  - repo: deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
+    name: hashicorp
+
+additional_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - microsoft-edge-stable
+  - code
+  - vagrant
+  - packer

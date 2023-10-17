@@ -1,5 +1,4 @@
 base_packages:
-  # - epel-release
   - dnf-plugins-core
   - neofetch
   - git
