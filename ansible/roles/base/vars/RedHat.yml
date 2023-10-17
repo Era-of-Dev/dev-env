@@ -1,5 +1,4 @@
 base_packages:
-  # - epel-release
   - dnf-plugins-core
   - neofetch
   - git
@@ -11,6 +10,8 @@ base_packages:
   - golang
   - kernel-devel
   - ansible
+  - remmina
+  - vlc
 
 create_repos:
   - name: "vscode"

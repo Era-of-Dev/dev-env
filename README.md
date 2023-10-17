@@ -5,40 +5,44 @@ Ansible scripts for setting up a development environment
 * Tested with:
   * Fedora 38/39
   * Rocky 9
+  * Ubuntu 22.04
 
 ## Requirements
 * Internet
 * Run an initial system update and restart
   ```
   sudo dnf upgrade -y
+  sudo apt upgrade -y
   ```
 * ansible installed via package manager
   ```
   sudo dnf install ansible -y
+  sudo apt install ansible -y
   ```
 * git (if using ansible pull) 
   ```
   sudo dnf install git -y
+  sudo apt install git -y
   ```
 
 ## Run
 * via ansible-playbook
   ```
-  ansible-playbook ansible/site.yml -i ansible/hosts.yml
+  sudo ansible-playbook ansible/site.yml -i ansible/hosts.yml
   ```
 * via ansible-pull
   ```
-  ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml
+  sudo ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml
   ```
 
 ### Run with NVIDIA driver install (after initial run)
 * via ansible-playbook
   ```
-  ansible-playbook ansible/site.yml -i ansible/hosts.yml -t nvidia
+  sudo ansible-playbook ansible/site.yml -i ansible/hosts.yml -t nvidia
   ```
 * via ansible-pull
   ```
-  ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml -t nvidia
+  sudo ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml -t nvidia
   ```
 
 ## Testing

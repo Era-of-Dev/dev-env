@@ -13,6 +13,12 @@
     name: "{{ ansible_env.SUDO_USER }}"
     shell: /bin/zsh
 
+- name: Generate diff for zshrc
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  command: diff  /home/{{ ansible_env.SUDO_USER }}/.zshrc  /home/{{ ansible_env.SUDO_USER }}/.oh-my-zsh/templates/zshrc.zsh-template -I '^export ZSH'
+  register: diff_result
+  ignore_errors: true
+
 - name: Write .zshrc
   become_user: "{{ ansible_env.SUDO_USER }}"
   ansible.builtin.template:
@@ -20,21 +26,25 @@
     dest: '~{{ ansible_env.SUDO_USER }}/.zshrc'
     backup: true
     mode: 'u=rw,go=r'
+  when: diff_result.rc == 0
 
 - name: Set GOPATH
   become_user: "{{ ansible_env.SUDO_USER }}"
   lineinfile:
     line: "GOPATH=$HOME/go"
     dest: ~/.zshrc
+  when: diff_result.rc == 0
 
 - name: Set GOBIN
   become_user: "{{ ansible_env.SUDO_USER }}"
   lineinfile:
     line: "GOBIN=$HOME/go/bin"
     dest: ~/.zshrc
+  when: diff_result.rc == 0
 
 - name: Set PATH
   become_user: "{{ ansible_env.SUDO_USER }}"
   lineinfile:
     line: "PATH=$GOPATH:$GOBIN:$PATH"
     dest: ~/.zshrc
+  when: diff_result.rc == 0

@@ -1,0 +1,17 @@
+- name: Create additional repositories
+  yum_repository:
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    baseurl: "{{ item.baseurl }}"
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: "{{ item.gpgkey}}"
+  loop: "{{ create_repos }}"
+
+- name: Install additional packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  loop: "{{ additional_packages }}"
+
+- include_tasks: rpmfusion.yml
