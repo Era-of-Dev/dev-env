@@ -28,21 +28,21 @@ Ansible scripts for setting up a development environment
 ## Run
 * via ansible-playbook
   ```
-  ansible-playbook ansible/site.yml -i ansible/hosts.yml
+  sudo ansible-playbook ansible/site.yml -i ansible/hosts.yml
   ```
 * via ansible-pull
   ```
-  ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml
+  sudo ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml
   ```
 
 ### Run with NVIDIA driver install (after initial run)
 * via ansible-playbook
   ```
-  ansible-playbook ansible/site.yml -i ansible/hosts.yml -t nvidia
+  sudo ansible-playbook ansible/site.yml -i ansible/hosts.yml -t nvidia
   ```
 * via ansible-pull
   ```
-  ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml -t nvidia
+  sudo ansible-pull -U https://github.com/era-of-dev/dev-env.git ansible/site.yml -i ansible/hosts.yml -t nvidia
   ```
 
 ## Testing

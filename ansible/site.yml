@@ -11,3 +11,8 @@
       tags: 
         - nvidia
         - never 
+  post_tasks:
+    - name: Get neofetch output
+      command: neofetch
+      register: neofetch_output
+    - debug: msg="{{ neofetch_output.stdout }}"

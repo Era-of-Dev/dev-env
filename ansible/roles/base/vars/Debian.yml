@@ -10,6 +10,8 @@ base_packages:
   - ansible
   - virtualbox
   - flatpak
+  - remmina
+  - vlc
 
 apt_signing_keys:
   - "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
