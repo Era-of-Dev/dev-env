@@ -3,6 +3,7 @@
 - import_tasks: flatpak.yml
 - import_tasks: go-install.yml
 - import_tasks: vbox.yml
+- import_tasks: ansible.yml
 - import_tasks: vagrant-plugins.yml
 - import_tasks: vscode-extensions.yml
 - import_tasks: zsh.yml
