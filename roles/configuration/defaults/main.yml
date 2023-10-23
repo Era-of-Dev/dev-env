@@ -43,6 +43,10 @@ vagrant_plugins:
   - vagrant-timezone
   - vagrant-registration
 
+vagrant_user: ''
+vagrant_password: ''
+vagrant_timezone: America/New_York
+
 vscode_extensions:
   - donjayamanne.git-extension-pack
   - donjayamanne.githistory

@@ -1,0 +1,7 @@
+Vagrant.configure('2') do |config|
+ config.registration.username = '{{ vagrant_user }}'
+ config.registration.password = '{{ vagrant_password }}'
+ if Vagrant.has_plugin?("vagrant-timezone")
+   config.timezone.value = "{{ vagrant_timezone }}"
+ end
+end

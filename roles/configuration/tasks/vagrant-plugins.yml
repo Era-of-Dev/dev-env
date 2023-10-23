@@ -2,3 +2,16 @@
   become_user: "{{ ansible_env.SUDO_USER }}"
   command: vagrant plugin install {{ item }}
   loop: "{{ vagrant_plugins }}"
+
+- name: Check if user Vagrantfile exists
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  stat:
+    path: /home/{{ ansible_env.SUDO_USER }}/.vagrant.d/Vagrantfile
+  register: vagrantfile_status
+
+- name: Copy user Vagrantfile
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  template:
+    src: Vagrantfile.j2
+    dest: /home/{{ ansible_env.SUDO_USER }}/.vagrant.d/Vagrantfile
+  when: not vagrantfile_status.stat.exists
