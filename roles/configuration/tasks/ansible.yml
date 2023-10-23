@@ -1,0 +1,5 @@
+- name: Copy ansible.cfg
+  become_user: "{{ ansible_env.SUDO_USER }}"
+  copy:
+    src: "{{ playbook_dir }}/ansible.cfg"
+    dest: /home/{{ ansible_env.SUDO_USER }}/.ansible.cfg

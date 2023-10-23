@@ -78,9 +78,9 @@ Vagrant.configure("2") do |config|
 
     # Run ansible provisioner against the "dev" node
     dev.vm.provision "ansible" do |ansible|
-      ansible.playbook = "ansible/site.yml"
-      ansible.config_file = "ansible/ansible.cfg"
-      ansible.inventory_path = "ansible/hosts.yml"
+      ansible.playbook = "site.yml"
+      ansible.config_file = "ansible.cfg"
+      ansible.inventory_path = "hosts.yml"
       ansible.limit = "dev"
       ansible.compatibility_mode = "2.0"
       ansible.verbose = optsVerbosity
